@@ -1,7 +1,0 @@
-vars.yamlvar_host: "{{ inventory_hostname }}"
-var_port: YOUR_PORT
-var_username: USER
-var_password: PASS
-var_transport: cli
-var_authorize: yes
-var_auth_pass: PASSWORD_FOR_ENABLE_MODE

@@ -1,0 +1,25 @@
+- hosts: "all_cisco_ios"
+  vars_files:
+    - vars.yaml
+  gather_facts: no
+  connection: local
+  vars:
+    cli:
+      host: "{{ var_host }}"
+      username: "{{ var_username }}"
+      password: "{{ var_password }}"
+      authorize: "{{ var_authorize }}"
+      auth_pass: "{{ var_auth_pass }}"
+  tasks:
+    - name: "Config Cisco IOS switches"
+      ios_command:
+       commands:
+         - enable
+         - conf t 
+         - line vty 0 15
+         - exec-timeout 10
+         - exit 
+       provider: "{{ cli }}"
+      register: ios_result
+    - name: Result for Cisco IOS switches
+      debug: var=ios_result.stdout_lines
